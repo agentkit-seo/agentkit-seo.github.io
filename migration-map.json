@@ -1,0 +1,42 @@
+{
+  "legacyOrigin": "https://agentkit-seo.github.io",
+  "currentHomepage": "https://vitaecontext.github.io/",
+  "currentRepository": "https://github.com/vitaecontext/vitaecontext",
+  "routes": [
+    { "path": "/", "destination": "https://vitaecontext.github.io/", "equivalent": true, "label": "VitaeContext homepage" },
+    { "path": "/vitaegraph/", "destination": "https://vitaecontext.github.io/vitaegraph/", "equivalent": true, "label": "VitaeGraph" },
+    { "path": "/profile-optimization/", "destination": "https://vitaecontext.github.io/profile-optimization/", "equivalent": true, "label": "Career workflows" },
+    { "path": "/playbooks/", "destination": "https://vitaecontext.github.io/playbooks/", "equivalent": true, "label": "VitaeContext guides" },
+    { "path": "/skills/", "destination": "https://vitaecontext.github.io/skills/", "equivalent": true, "label": "VitaeContext skills" },
+    { "path": "/providers/", "destination": "https://vitaecontext.github.io/providers/", "equivalent": true, "label": "Supported providers" },
+    { "path": "/design/", "destination": "https://vitaecontext.github.io/design/", "equivalent": true, "label": "VitaeContext design" },
+    { "path": "/docs/", "destination": "https://vitaecontext.github.io/docs/", "equivalent": true, "label": "VitaeContext documentation" },
+    { "path": "/docs/installation/", "destination": "https://vitaecontext.github.io/docs/installation/", "equivalent": true, "label": "Current installation documentation" },
+    { "path": "/docs/usage/", "destination": "https://vitaecontext.github.io/docs/usage/", "equivalent": true, "label": "Current usage documentation" },
+    { "path": "/docs/context-file-example/", "destination": "https://vitaecontext.github.io/docs/context-file-example/", "equivalent": true, "label": "Current career context example" },
+    { "path": "/docs/cli/", "destination": "https://vitaecontext.github.io/docs/cli/", "equivalent": true, "label": "Current CLI documentation" },
+    { "path": "/faq/", "destination": "https://vitaecontext.github.io/faq/", "equivalent": true, "label": "VitaeContext FAQ" },
+    { "path": "/changelog/", "destination": "https://vitaecontext.github.io/changelog/", "equivalent": true, "label": "VitaeContext changelog" },
+    { "path": "/contact/", "destination": "https://vitaecontext.github.io/contact/", "equivalent": true, "label": "VitaeContext contact page" },
+    { "path": "/skills/agent-context-optimization/", "destination": "https://vitaecontext.github.io/skills/context-builder/", "equivalent": true, "label": "Context Builder skill" },
+    { "path": "/skills/cv-ats/", "destination": "https://vitaecontext.github.io/skills/cv-ats/", "equivalent": true, "label": "CV and ATS skill" },
+    { "path": "/skills/vitaegraph/", "destination": "https://vitaecontext.github.io/skills/vitaegraph/", "equivalent": true, "label": "VitaeGraph skill" },
+    { "path": "/skills/linkedin/", "destination": "https://vitaecontext.github.io/skills/linkedin/", "equivalent": true, "label": "LinkedIn skill" },
+    { "path": "/skills/github/", "destination": "https://vitaecontext.github.io/skills/github/", "equivalent": true, "label": "GitHub skill" },
+    { "path": "/skills/web-portfolio/", "destination": "https://vitaecontext.github.io/skills/web-portfolio/", "equivalent": true, "label": "Web portfolio skill" },
+    { "path": "/skills/x-twitter/", "destination": "https://vitaecontext.github.io/skills/x-twitter/", "equivalent": true, "label": "X/Twitter skill" },
+    { "path": "/skills/agentkit-seo/", "destination": "https://vitaecontext.github.io/skills/vitaecontext/", "equivalent": true, "label": "VitaeContext orchestration skill" },
+    { "path": "/playbooks/agent-context-optimization/", "destination": "https://vitaecontext.github.io/playbooks/context-builder/", "equivalent": true, "label": "Context Builder guide" },
+    { "path": "/playbooks/agentkit-seo/", "destination": "https://vitaecontext.github.io/playbooks/vitaecontext/", "equivalent": true, "label": "VitaeContext orchestration guide" },
+    { "path": "/playbooks/cv-ats/", "destination": "https://vitaecontext.github.io/playbooks/cv-ats/", "equivalent": true, "label": "CV and ATS guide" },
+    { "path": "/playbooks/vitaegraph/", "destination": "https://vitaecontext.github.io/playbooks/vitaegraph/", "equivalent": true, "label": "VitaeGraph guide" },
+    { "path": "/playbooks/linkedin/", "destination": "https://vitaecontext.github.io/playbooks/linkedin/", "equivalent": true, "label": "LinkedIn guide" },
+    { "path": "/playbooks/github/", "destination": "https://vitaecontext.github.io/playbooks/github/", "equivalent": true, "label": "GitHub guide" },
+    { "path": "/playbooks/web-portfolio/", "destination": "https://vitaecontext.github.io/playbooks/web-portfolio/", "equivalent": true, "label": "Web portfolio guide" },
+    { "path": "/playbooks/x-twitter/", "destination": "https://vitaecontext.github.io/playbooks/x-twitter/", "equivalent": true, "label": "X/Twitter guide" }
+  ],
+  "nonHtmlRoutes": [
+    { "path": "/examples/sample-career-context.md", "destination": "https://vitaecontext.github.io/examples/sample-career-context.md", "equivalent": true, "label": "Current sample career context" },
+    { "path": "/llms.txt", "destination": "https://vitaecontext.github.io/llms.txt", "equivalent": true, "label": "Current AI-readable project summary" }
+  ]
+}

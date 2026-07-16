@@ -1,0 +1,7 @@
+# VitaeContext
+
+AgentKit SEO is the former project name. VitaeContext is the current project and canonical identity.
+
+- Current website: https://vitaecontext.github.io/
+- Current source repository: https://github.com/vitaecontext/vitaecontext
+- Current AI-readable summary: https://vitaecontext.github.io/llms.txt

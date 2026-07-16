@@ -1,0 +1,17 @@
+{
+  "name": "agentkit-seo-legacy-migration",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "site:generate": "node scripts/generate-migration-site.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node scripts/migration-audit.mjs",
+    "lint": "node --check scripts/build.mjs && node --check scripts/generate-migration-site.mjs && node --check scripts/migration-audit.mjs",
+    "validate": "npm run lint && npm run migration:audit",
+    "migration:audit": "node scripts/migration-audit.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
