@@ -6,7 +6,7 @@ Date prepared: 2026-07-16.
 
 - Remote: `https://github.com/agentkit-seo/agentkit-seo.github.io`.
 - Owner and repository: organization `agentkit-seo`, repository `agentkit-seo.github.io`.
-- Repository visibility: private.
+- Repository visibility at baseline: private.
 - Viewer permission during inspection: `ADMIN`.
 - Organization plan: GitHub Free; organization settings reported public Pages creation as allowed.
 - Default and only branch: `main` at `5a02154` (`Initial commit`), tracking `origin/main`; it is unprotected.
@@ -18,7 +18,7 @@ Date prepared: 2026-07-16.
 - Routes, metadata, structured data, robots, sitemap, and `llms.txt`: absent before this change.
 - Live baseline: `https://agentkit-seo.github.io/` returned GitHub's platform-level HTTP 404 on 2026-07-16.
 
-The repository name is the required organization-site repository name, and the authenticated account has admin access to it and its organization. It can therefore own `https://agentkit-seo.github.io/`. It **cannot publish in its current state** because Pages is unconfigured and the repository is private under a GitHub Free organization. GitHub documents Pages on Free organizations for public repositories; the owner must make this repository public (or adopt an eligible paid plan) and enable GitHub Actions as the Pages source. This is an external configuration blocker, not a namespace-ownership blocker. No visibility or Pages setting was changed during repository preparation.
+The repository name is the required organization-site repository name, and the authenticated account has admin access to it and its organization. It can therefore own `https://agentkit-seo.github.io/`. At baseline it could not publish because Pages was unconfigured and the repository was private under a GitHub Free organization. GitHub documents Pages on Free organizations for public repositories. That blocker was resolved during final deployment as recorded below; no unrelated organization setting was changed.
 
 Authoritative GitHub references: [configuring a Pages publishing source](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site), [organization Pages permissions](https://docs.github.com/en/organizations/managing-organization-settings/managing-the-publication-of-github-pages-sites-for-your-organization), and [custom 404 support](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-custom-404-page-for-your-github-pages-site).
 
@@ -81,13 +81,38 @@ npm run migration:audit
 
 The audit checks the exact recovered route inventory, HTTPS destinations, loop prevention, generated files, transition copy, one H1, visible destinations, source links, canonical and meta-refresh alignment, Open Graph alignment, absence of obsolete commands and product schema, sitemap/robots consistency, lack of obsolete internal navigation, custom 404 behavior, and non-JavaScript fallbacks.
 
+## Final deployment status
+
+Deployment completed and was directly verified on 2026-07-16:
+
+- Migration implementation commit `5600f7cf333873ba636a468695778457037d56a4` was pushed to `main`.
+- The GitHub API confirmed repository visibility changed from private to public.
+- The Pages API confirmed `build_type: workflow`, `public: true`, HTTPS enforcement, no CNAME, and `https://agentkit-seo.github.io/` as the site URL.
+- Migration audit workflow run `29504445278` completed successfully.
+- Initial deployment run `29504445206` failed at Pages creation because it began while the repository was still private and Pages was not yet configured. It did not deploy an artifact.
+- After configuring Pages through the authenticated GitHub API, workflow-dispatch run `29504510460` completed successfully: build, audit, `dist/` artifact upload, and Pages deployment all passed.
+
+Live validation results:
+
+| URL | Result | Verified migration signal |
+|---|---:|---|
+| `https://agentkit-seo.github.io/` | HTTP 200 | Canonical and instant refresh to VitaeContext homepage; visible H1 and link |
+| `https://agentkit-seo.github.io/docs/` | HTTP 200 | Canonical and instant refresh to current docs |
+| `https://agentkit-seo.github.io/skills/agentkit-seo/` | HTTP 200 | Canonical and instant refresh to `/skills/vitaecontext/` |
+| `https://agentkit-seo.github.io/playbooks/agent-context-optimization/` | HTTP 200 | Canonical and instant refresh to `/playbooks/context-builder/` |
+| `https://agentkit-seo.github.io/a-route-that-never-existed` | HTTP 404 | Custom fallback with canonical and visible link to current docs; no blanket meta refresh |
+| `https://agentkit-seo.github.io/robots.txt` | HTTP 200 | Allows crawling and references the migration sitemap |
+| `https://agentkit-seo.github.io/sitemap.xml` | HTTP 200 | Contains exactly 31 retained HTML migration URLs |
+
+The shared stylesheet also returned HTTP 200. The live HTML source, not only the local build, was inspected for canonical, zero-second refresh, transition H1, and visible destination links. This confirms essential migration behavior remains available without JavaScript.
+
 ## Known limitations
 
-- Deployment is not complete: the repository is still private, the Pages API returned 404, and no workflow run exists for these unpushed local changes.
 - Static GitHub Pages migration pages return HTTP 200 plus instant meta refresh, not HTTP 301/308. This is the strongest per-route mechanism available on the default hostname without moving to infrastructure that supports response redirects.
 - GitHub repository redirects are separate from GitHub Pages hostname behavior and are not relied on.
 - GitHub Pages cannot add a per-file canonical HTTP header for the Markdown and plain-text endpoints; those contain explicit current URLs instead.
 - Query/fragment preservation is progressive enhancement and may lose state when scripting is disabled or the refresh wins the browser scheduling race.
-- Search result replacement, recrawling, indexing, webmaster-tool state, DNS, and external listings were not changed or verified as complete.
+- The successful workflow emitted a non-failing warning that several upstream GitHub actions still declare Node.js 20 metadata while GitHub forces them to Node.js 24. All build and deployment steps nevertheless passed.
+- Search result replacement, recrawling, indexing, Google Search Console, Bing Webmaster Tools, and external listings were not changed or verified as complete.
 
 Manual deployment and webmaster tasks are in [owner-actions.md](owner-actions.md).

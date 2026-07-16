@@ -28,6 +28,7 @@ assert.deepEqual(map.nonHtmlRoutes.map(({ path }) => path).sort(), expectedNonHt
 for (const route of [...map.routes, ...map.nonHtmlRoutes]) {
   const destination = new URL(route.destination);
   assert.equal(destination.protocol, "https:", `${route.path} destination must use HTTPS`);
+  assert.equal(destination.origin, new URL(map.currentHomepage).origin, `${route.path} destination must use the canonical VitaeContext site`);
   assert.notEqual(destination.origin, map.legacyOrigin, `${route.path} creates a redirect loop`);
   assert.equal(route.equivalent, true, `${route.path} must document whether an equivalent exists`);
 }

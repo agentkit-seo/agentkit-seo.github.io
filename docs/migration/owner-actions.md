@@ -1,16 +1,18 @@
 # Owner actions after repository preparation
 
-None of these external actions is claimed complete.
+Repository publication and deployment were completed and directly verified on 2026-07-16. Webmaster, recrawl, indexing, and external-listing actions below remain outstanding and are not claimed complete.
 
-## GitHub repository and Pages
+## Completed GitHub repository and Pages actions
 
-1. Review and merge/push these changes to `agentkit-seo/agentkit-seo.github.io` on `main` using an admin account with a verified email.
-2. Change the repository visibility from private to **public**. The organization is on GitHub Free, so the current private repository cannot publish this public Pages site. If visibility must remain private, first move the organization to a plan that supports Pages from private repositories.
-3. In organization **Settings → Member privileges → Pages creation**, verify public Pages publication remains allowed.
-4. In repository **Settings → Pages → Build and deployment**, select **GitHub Actions** as the source. Do not select `main /docs`; `docs/` contains reports, while the workflow publishes only `dist/`.
-5. In repository **Settings → Environments → github-pages**, restrict deployment to the default `main` branch if desired.
-6. Confirm both `Migration audit` and `Deploy GitHub Pages` workflows pass. Inspect the artifact and deployment URL. Re-run the deployment workflow manually if Pages was enabled after the first push.
-7. Verify the Pages REST endpoint now reports the site and `https://agentkit-seo.github.io/` returns the prepared transition page instead of GitHub's platform 404.
+- Commit `5600f7cf333873ba636a468695778457037d56a4` was pushed to `main`.
+- Repository visibility is public.
+- Pages uses GitHub Actions (`build_type: workflow`), is public, and enforces HTTPS.
+- Migration audit workflow run `29504445278` passed.
+- Deployment workflow run `29504510460` passed after the Pages site was configured.
+- The Pages site and representative migration routes were verified live.
+- No CNAME or custom DNS setting was added.
+
+Optional repository follow-up: in **Settings → Environments → github-pages**, add a deployment protection rule restricting deployment to the default `main` branch if the owner wants an additional guard. Do not select `main /docs` as a branch publishing source; the workflow intentionally publishes only `dist/`.
 
 ## DNS and CNAME
 
@@ -18,9 +20,9 @@ None of these external actions is claimed complete.
 - Do not add a CNAME pointing the retired site at VitaeContext. A repository `CNAME` file alone does not configure a Pages custom domain, and a mistaken domain assignment could disrupt the current site.
 - If a previously used custom AgentKit SEO domain is discovered in account history or webmaster tools, inventory its DNS separately and implement server-side 301/308 redirects at that domain's host where possible.
 
-## Post-deployment inspection
+## Completed post-deployment inspection
 
-Check response status, rendered text, canonical, meta refresh, visible links, and final destination for at least:
+Response status, HTML migration signals, and final destinations were checked for:
 
 - `https://agentkit-seo.github.io/`
 - `https://agentkit-seo.github.io/docs/installation/`
@@ -35,7 +37,7 @@ Check response status, rendered text, canonical, meta refresh, visible links, an
 - `https://agentkit-seo.github.io/robots.txt`
 - `https://agentkit-seo.github.io/sitemap.xml`
 
-Also test one known URL with a query string and fragment. Confirm there is no request or link from VitaeContext back to the retired host.
+Remaining optional browser checks: test one known URL with a query string and fragment in multiple browsers, and periodically reconfirm the current VitaeContext site does not link back to the retired host.
 
 ## Google Search Console
 
